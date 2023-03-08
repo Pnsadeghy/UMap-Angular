@@ -1,4 +1,6 @@
-# AngularMapUsers
+# UMap Angular
+
+UMap is an Angular web app for showing users location on the map.
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.2.1.
 
