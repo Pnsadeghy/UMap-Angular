@@ -1,5 +1,8 @@
 import {Component, EventEmitter, Input, Output} from '@angular/core';
 import {FormControl, FormGroup, Validators} from "@angular/forms";
+import {ILocationDetail} from "../../../interfaces/ILocationDetail";
+import {Store} from "@ngrx/store";
+import {AddNewLocation} from "../../../states/location.state";
 
 @Component({
   selector: 'app-location-form',
@@ -11,23 +14,39 @@ export class LocationFormComponent {
   @Output() close = new EventEmitter<void>();
 
   form: FormGroup;
+  locationDetail: ILocationDetail;
 
-  constructor() {
+  constructor(private _store: Store) {
+    this.locationDetail = this.locationData?.location;
+
     this.form = new FormGroup({
       name: new FormControl(this.locationData?.name, [Validators.required]),
-      location: new FormControl(this.locationData?.location, [Validators.required]),
+      location: new FormControl(this.locationData?.location ? '-' : '', [Validators.required]),
       type: new FormControl(this.locationData?.type || 'business', [Validators.required]),
       logo: new FormControl(this.locationData?.logo)
     });
   }
 
-  onSaveLocation(location: string) {
+  onSaveLocation(location: any) {
+    this.locationDetail = location;
+
     this.form.patchValue({
-      location
+      location: '-'
     });
   }
 
-  onSubmit() {}
+  onSubmit() {
+    this._store.dispatch(AddNewLocation({
+      item: {
+        id: (new Date()).getTime(),
+        name: this.form.controls['name'].value,
+        location: this.locationDetail,
+        type: this.form.controls['type'].value,
+        logo: this.form.controls['logo'].value,
+      }
+    }));
+    this.onClose();
+  }
 
   onClose() {
     this.close.emit();
