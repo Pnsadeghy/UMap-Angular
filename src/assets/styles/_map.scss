@@ -1,0 +1,22 @@
+.location-popup{
+  min-width: 10rem;
+  .location-popup_title{
+    font-size: 1.1rem;
+    margin: 0;
+  }
+  .location-popup_type{
+    font-size: 0.8rem;
+    color: var(--orange-color);
+    margin-bottom: 1rem;
+  }
+  .location-popup_image{
+    display: block;
+    margin: 0 auto;
+    max-width: 100%;
+    margin-bottom: 1rem;
+  }
+}
+.leaflet-popup-content{
+  padding: 0.5rem;
+  margin: 0 !important;
+}

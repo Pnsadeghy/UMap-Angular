@@ -1,6 +1,7 @@
 import {Component, EventEmitter, Input, Output} from '@angular/core';
 import {mapOptions} from "../../../helpers/map.helpers";
 import {marker, Map, DragEndEvent} from "leaflet";
+import {ILocationDetail} from "../../../interfaces/ILocationDetail";
 
 @Component({
   selector: 'app-map-input',
@@ -8,33 +9,26 @@ import {marker, Map, DragEndEvent} from "leaflet";
   styleUrls: ['./map-input.component.css']
 })
 export class MapInputComponent {
-  @Input() value?: string = "";
-  @Output() change = new EventEmitter<string>();
+  @Input() value: ILocationDetail = { lat: 0, lng: 0 };
+  @Output() change = new EventEmitter<any>();
 
   options: any;
   marker: any;
 
   constructor() {
-    // extract location value or set default
-    const location = this.value ? JSON.parse(this.value) : {lat: 46.879966, lng: -121.726909};
-
     // get map options
-    this.options = mapOptions(location.lat, location.lng);
+    this.options = mapOptions(this.value.lat, this.value.lng);
 
     // set marker
-    this.marker = marker([location.lat, location.lng], {
+    this.marker = marker([this.value.lat, this.value.lng], {
       draggable: true
     });
-
-    //
-    if (!this.value)
-      this.change.emit(JSON.stringify(location));
   }
 
   onMapReady(map: Map) {
     this.marker.addTo(map);
     this.marker.on('dragend', (event: DragEndEvent) => {
-      this.change.emit(JSON.stringify(event.target.getLatLng()));
+      this.change.emit(event.target.getLatLng());
     });
   }
 }
