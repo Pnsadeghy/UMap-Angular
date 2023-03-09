@@ -16,7 +16,7 @@ export class LocationFormComponent {
     this.form = new FormGroup({
       name: new FormControl('', [Validators.required]),
       location: new FormControl('', [Validators.required]),
-      type: new FormControl('', [Validators.required]),
+      type: new FormControl('business', [Validators.required]),
       logo: new FormControl('')
     });
   }

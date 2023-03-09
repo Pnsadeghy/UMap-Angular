@@ -15,6 +15,10 @@
     "button": {
       "new": "New location"
     }
+  },
+  "business_types": {
+    "personal": "Personal",
+    "business": "Business"
   }
 }
 

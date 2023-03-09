@@ -10,6 +10,12 @@
     &:after{
       content: " :";
     }
+    &.required{
+      &:before {
+        content: "*";
+        color: var(--orange-color);
+      }
+    }
   }
 
   .form-group_input_container{
