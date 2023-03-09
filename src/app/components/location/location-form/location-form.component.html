@@ -13,7 +13,7 @@
     </label>
     <div class="form-group_input_container">
       <app-map-input
-        [value]="locationData?.location"
+        [value]="locationDetail"
         (change)="onSaveLocation($event)"
       />
       <input type="text" id="location" name="location"
@@ -37,7 +37,7 @@
       {{ 'location.logo' | translate }}
     </label>
     <div class="form-group_input_container">
-      <input type="text" id="logo" name="logo" formControlName="logo">
+      <app-image-upload [value]="logoImage" (change)="onSaveLogo($event)" />
     </div>
   </div>
   <div class="form-button-group">
