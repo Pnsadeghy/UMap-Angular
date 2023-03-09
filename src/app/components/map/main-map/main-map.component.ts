@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import {latLng, tileLayer} from "leaflet";
+import {mapOptions} from "../../../helpers/map.helpers";
 
 @Component({
   selector: 'app-main-map',
@@ -7,11 +8,5 @@ import {latLng, tileLayer} from "leaflet";
   styleUrls: ['./main-map.component.css']
 })
 export class MainMapComponent {
-  options = {
-    layers: [
-      tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { maxZoom: 18, attribution: '...' })
-    ],
-    zoom: 5,
-    center: latLng(46.879966, -121.726909)
-  };
+  options = mapOptions(46.879966, -121.726909);
 }

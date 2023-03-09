@@ -1,0 +1,49 @@
+<form [formGroup]="form" (ngSubmit)="onSubmit()" novalidate>
+  <div class="form-group">
+    <label for="name" class="form-group_label required">
+      {{ 'location.name' | translate }}
+    </label>
+    <div class="form-group_input_container">
+      <input type="text" id="name" name="name" class="form-group_input" formControlName="name">
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="name" class="form-group_label required">
+      {{ 'location.location' | translate }}
+    </label>
+    <div class="form-group_input_container">
+      <app-map-input
+        [value]="locationData?.location"
+        (change)="onSaveLocation($event)"
+      />
+      <input type="text" id="location" name="location"
+             class="d-none"
+             formControlName="location">
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="name" class="form-group_label required">
+      {{ 'location.type' | translate }}
+    </label>
+    <div class="form-group_input_container">
+      <select id="type" name="type" class="form-group_input" formControlName="type">
+        <option value="business">{{ 'business_types.business' | translate }}</option>
+        <option value="personal">{{ 'business_types.personal' | translate }}</option>
+      </select>
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="name" class="form-group_label">
+      {{ 'location.logo' | translate }}
+    </label>
+    <div class="form-group_input_container">
+      <input type="text" id="logo" name="logo" formControlName="logo">
+    </div>
+  </div>
+  <div class="form-button-group">
+    <button class="button button-success"
+            [disabled]="form.invalid"
+            type="submit" >{{ 'button.save' | translate }}</button>
+    <button class="button button-light" type="button" (click)="onClose()" >{{ 'button.close' | translate }}</button>
+  </div>
+</form>

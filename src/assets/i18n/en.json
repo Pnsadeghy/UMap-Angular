@@ -1,0 +1,24 @@
+{
+  "button": {
+    "save": "Save information",
+    "close": "Close"
+  },
+  "location": {
+    "name": "Location name",
+    "location": "Location on map",
+    "type": "Location type",
+    "logo": "Logo",
+    "title": {
+      "new": "add new Location",
+      "edit": "Update location detail"
+    },
+    "button": {
+      "new": "New location"
+    }
+  },
+  "business_types": {
+    "personal": "Personal",
+    "business": "Business"
+  }
+}
+

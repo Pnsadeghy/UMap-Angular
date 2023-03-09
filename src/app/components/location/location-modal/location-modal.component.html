@@ -1,0 +1,11 @@
+<ng-template #content let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">
+      {{ modalTitle | translate }}
+    </h4>
+    <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss()"></button>
+  </div>
+  <div class="modal-body">
+    <app-location-form *ngIf="formIsActive" [locationData]="locationData" (close)="modal.dismiss()" />
+  </div>
+</ng-template>

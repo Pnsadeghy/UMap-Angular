@@ -1,0 +1,45 @@
+.form-group{
+  display: flex;
+  margin-bottom: 1rem;
+  justify-content: center;
+  gap: 1rem;
+
+  .form-group_label{
+    width: 40%;
+    text-align: right;
+    &:after{
+      content: " :";
+    }
+    &.required{
+      &:before {
+        content: "*";
+        color: var(--orange-color);
+      }
+    }
+  }
+
+  .form-group_input_container{
+    flex: 1;
+  }
+}
+
+.form-group_input{
+  width: 100%;
+  border: solid thin var(--light-border);
+  outline: none !important;
+  box-shadow: none !important;
+  transition: 0.4s;
+  height: 2rem;
+  padding: 0 0.5rem;
+
+  &:focus{
+    border-color: var(--dark-border);
+  }
+}
+
+.form-button-group{
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 2rem;
+  justify-content: flex-end;
+}
