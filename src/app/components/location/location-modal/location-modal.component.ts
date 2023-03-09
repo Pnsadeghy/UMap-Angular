@@ -37,7 +37,9 @@ export class LocationModalComponent {
 
   private openModal() {
     this.formIsActive = true;
-    this.modalService.open(this.content, {ariaLabelledBy: 'modal-basic-title'}).result.then(
+    this.modalService.open(this.content, {
+      size: 'lg'
+    }).result.then(
       () => {
 
       },

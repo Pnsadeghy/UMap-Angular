@@ -14,10 +14,16 @@ export class LocationFormComponent {
 
   constructor() {
     this.form = new FormGroup({
-      name: new FormControl('', [Validators.required]),
-      location: new FormControl('', [Validators.required]),
-      type: new FormControl('business', [Validators.required]),
-      logo: new FormControl('')
+      name: new FormControl(this.locationData?.name, [Validators.required]),
+      location: new FormControl(this.locationData?.location, [Validators.required]),
+      type: new FormControl(this.locationData?.type || 'business', [Validators.required]),
+      logo: new FormControl(this.locationData?.logo)
+    });
+  }
+
+  onSaveLocation(location: string) {
+    this.form.patchValue({
+      location
     });
   }
 

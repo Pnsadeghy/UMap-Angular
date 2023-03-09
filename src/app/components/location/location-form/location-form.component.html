@@ -12,7 +12,13 @@
       {{ 'location.location' | translate }}
     </label>
     <div class="form-group_input_container">
-      <input type="text" id="location" name="location" formControlName="location">
+      <app-map-input
+        [value]="locationData?.location"
+        (change)="onSaveLocation($event)"
+      />
+      <input type="text" id="location" name="location"
+             class="d-none"
+             formControlName="location">
     </div>
   </div>
   <div class="form-group">
