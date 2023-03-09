@@ -31,10 +31,6 @@ export class LocationFormComponent {
 
   onSaveLocation(location: any) {
     this.locationDetail = location;
-
-    this.form.patchValue({
-      location: '-'
-    });
   }
 
   onSubmit() {
