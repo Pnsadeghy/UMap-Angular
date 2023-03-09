@@ -9,18 +9,34 @@ import {NgbModal} from "@ng-bootstrap/ng-bootstrap";
   styleUrls: ['./user-modal.component.css']
 })
 export class UserModalComponent {
+  @ViewChild('content', {static: false}) private content: any;
   subscription: Subscription;
-  @ViewChild('content', { static: false }) private content: any;
+
+  userData: any = null;
+  editUser: boolean = false;
+  modalTitle: string = '';
 
   constructor(private userEvents: UserEventService, private modalService: NgbModal) {
     // subscribe for user modal requests
     this.subscription = this.userEvents.getEvent().subscribe((data: any) => {
-       this.openModal();
+      this.setDetailFromData(data);
+      this.openModal();
     });
   }
 
-  openModal() {
-    this.modalService.open(this.content, { ariaLabelledBy: 'modal-basic-title' }).result.then(
+  ngOnDestroy() {
+    // unsubscribe to ensure no memory leaks
+    this.subscription.unsubscribe();
+  }
+
+  private setDetailFromData(data: any) {
+    this.userData = data;
+    this.editUser = !!data;
+    this.modalTitle = this.editUser ? 'users.title.edit' : 'users.title.new';
+  }
+
+  private openModal() {
+    this.modalService.open(this.content, {ariaLabelledBy: 'modal-basic-title'}).result.then(
       () => {
         alert('confirm')
       },
@@ -28,10 +44,5 @@ export class UserModalComponent {
         alert('close')
       },
     );
-  }
-
-  ngOnDestroy() {
-    // unsubscribe to ensure no memory leaks
-    this.subscription.unsubscribe();
   }
 }

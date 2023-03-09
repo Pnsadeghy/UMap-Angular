@@ -1,14 +1,11 @@
 <ng-template #content let-modal>
   <div class="modal-header">
-    <h4 class="modal-title" id="modal-basic-title">New user</h4>
+    <h4 class="modal-title" id="modal-basic-title">
+      {{ modalTitle }}
+    </h4>
     <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss()"></button>
   </div>
   <div class="modal-body">
-    <form>
-      content
-    </form>
-  </div>
-  <div class="modal-footer">
-    <button type="button" class="btn btn-outline-dark" >save</button>
+    <app-user-form [userData]="userData" (close)="modal.dismiss()" />
   </div>
 </ng-template>
