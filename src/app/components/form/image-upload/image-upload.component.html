@@ -1,0 +1,6 @@
+<ngx-dropzone (change)="onSelect($event)">
+  <ngx-dropzone-label>Drop it, baby!</ngx-dropzone-label>
+  <ngx-dropzone-preview *ngIf="file" [removable]="true"
+                        [style]="{backgroundImage: 'url(' + file + ')'}"
+                        (removed)="onRemove()"></ngx-dropzone-preview>
+</ngx-dropzone>
