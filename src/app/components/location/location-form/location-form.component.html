@@ -1,0 +1,38 @@
+<form [formGroup]="form" (ngSubmit)="onSubmit()" novalidate>
+  <div class="form-group">
+    <label for="name" class="form-group_label">
+      {{ 'location.name' | translate }}
+    </label>
+    <div class="form-group_input_container">
+      <input type="text" id="name" name="name" class="form-group_input" formControlName="name">
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="name" class="form-group_label">
+      {{ 'location.location' | translate }}
+    </label>
+    <div class="form-group_input_container">
+      <input type="text" id="location" name="location" formControlName="location">
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="name" class="form-group_label">
+      {{ 'location.type' | translate }}
+    </label>
+    <div class="form-group_input_container">
+      <select id="type" name="type" class="form-group_input" formControlName="type"></select>
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="name" class="form-group_label">
+      {{ 'location.logo' | translate }}
+    </label>
+    <div class="form-group_input_container">
+      <input type="text" id="logo" name="logo" formControlName="logo">
+    </div>
+  </div>
+  <div class="form-button-group">
+    <button class="button button-success" type="submit" >{{ 'button.save' | translate }}</button>
+    <button class="button button-light" type="button" (click)="onClose()" >{{ 'button.close' | translate }}</button>
+  </div>
+</form>
