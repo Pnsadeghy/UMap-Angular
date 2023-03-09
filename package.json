@@ -21,6 +21,7 @@
     "@asymmetrik/ngx-leaflet": "^15.0.1",
     "leaflet": "^1.9.3",
     "rxjs": "~7.8.0",
+    "sass": "^1.58.3",
     "tslib": "^2.3.0",
     "zone.js": "~0.12.0"
   },
