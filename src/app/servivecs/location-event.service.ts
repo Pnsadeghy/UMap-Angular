@@ -4,17 +4,17 @@ import {BehaviorSubject, Subject} from "rxjs";
 @Injectable({
   providedIn: 'root'
 })
-export class UserEventService {
+export class LocationEventService {
   private subject = new Subject();
 
   getEvent() {
     return this.subject.asObservable();
   }
 
-  callNewUserForm() {
+  newLocation() {
     this.subject.next(null)
   }
-  callEditUserForm(data: any) {
+  editLocation(data: any) {
     this.subject.next(data)
   }
 }

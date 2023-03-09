@@ -1,10 +1,20 @@
 {
-  "users": {
+  "button": {
+    "save": "Save information",
+    "close": "Close"
+  },
+  "location": {
+    "name": "Location name",
+    "location": "Location on map",
+    "type": "Location type",
+    "logo": "Logo",
     "title": {
-      "new": "add new User"
+      "new": "add new Location",
+      "edit": "Update location detail"
     },
     "button": {
-      "new": "New user location"
+      "new": "New location"
     }
   }
 }
+

@@ -8,10 +8,10 @@ import {TranslateHttpLoader} from "@ngx-translate/http-loader";
 
 import { AppComponent } from './app.component';
 import { MainMapComponent } from './components/map/main-map/main-map.component';
-import { UserNewButtonComponent } from './components/users/user-new-button/user-new-button.component';
-import { UserFormComponent } from './components/users/user-form/user-form.component';
-import { UserModalComponent } from './components/users/user-modal/user-modal.component';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
+import {LocationNewButtonComponent} from "./components/location/location-new-button/location-new-button.component";
+import {LocationModalComponent} from "./components/location/location-modal/location-modal.component";
+import {LocationFormComponent} from "./components/location/location-form/location-form.component";
 
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -21,9 +21,9 @@ export function createTranslateLoader(http: HttpClient) {
   declarations: [
     AppComponent,
     MainMapComponent,
-    UserNewButtonComponent,
-    UserFormComponent,
-    UserModalComponent
+    LocationNewButtonComponent,
+    LocationModalComponent,
+    LocationFormComponent
   ],
   imports: [
     BrowserModule,
