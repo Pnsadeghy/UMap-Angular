@@ -1,0 +1,10 @@
+{
+  "users": {
+    "title": {
+      "new": "add new User"
+    },
+    "button": {
+      "new": "New user location"
+    }
+  }
+}
