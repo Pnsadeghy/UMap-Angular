@@ -1,6 +1,6 @@
 import {Action, createAction, createFeatureSelector, createReducer, createSelector, on, props} from '@ngrx/store';
 import {ILocation} from "../interfaces/ILocation";
-import {getLocationStore} from "../helpers/storage.helper";
+import {getLocationStore, setLocationStore} from "../helpers/storage.helper";
 
 const storeKey = "users-location-list";
 
@@ -26,11 +26,16 @@ export const initialState: ILocationState = {
 };
 export const addToListReducer = createReducer(
   initialState,
-  on(AddNewLocation, (state, { item }) => ({ ...state, list: [...state.list, item] })),
+  on(AddNewLocation, (state, { item }) => {
+    const list = [...state.list, item];
+    setLocationStore(list, storeKey);
+    return {list};
+  }),
   on(UpdateLocation, (state, { item }) => {
     const index = state.list.findIndex(i => i.id === item.id);
     const list = [...state.list];
     list[index] = item;
+    setLocationStore(list, storeKey);
     return {list};
   })
 );

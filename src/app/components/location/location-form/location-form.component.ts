@@ -17,11 +17,13 @@ export class LocationFormComponent {
   locationDetail: ILocationDetail;
 
   constructor(private _store: Store) {
-    this.locationDetail = this.locationData?.location;
+    this.locationDetail = this.locationData
+      ? this.locationData?.location
+      : { lat: 46.879966, lng: -121.726909};
 
     this.form = new FormGroup({
       name: new FormControl(this.locationData?.name, [Validators.required]),
-      location: new FormControl(this.locationData?.location ? '-' : '', [Validators.required]),
+      location: new FormControl('-', [Validators.required]),
       type: new FormControl(this.locationData?.type || 'business', [Validators.required]),
       logo: new FormControl(this.locationData?.logo)
     });

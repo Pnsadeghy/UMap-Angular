@@ -9,27 +9,20 @@ import {ILocationDetail} from "../../../interfaces/ILocationDetail";
   styleUrls: ['./map-input.component.css']
 })
 export class MapInputComponent {
-  @Input() value?: ILocationDetail;
-  @Output() change = new EventEmitter<string>();
+  @Input() value: ILocationDetail = { lat: 0, lng: 0 };
+  @Output() change = new EventEmitter<any>();
 
   options: any;
   marker: any;
 
   constructor() {
-    // extract location value or set default
-    const location = this.value || {lat: 46.879966, lng: -121.726909};
-
     // get map options
-    this.options = mapOptions(location.lat, location.lng);
+    this.options = mapOptions(this.value.lat, this.value.lng);
 
     // set marker
-    this.marker = marker([location.lat, location.lng], {
+    this.marker = marker([this.value.lat, this.value.lng], {
       draggable: true
     });
-
-    //
-    if (!this.value)
-      this.change.emit(JSON.stringify(location));
   }
 
   onMapReady(map: Map) {
