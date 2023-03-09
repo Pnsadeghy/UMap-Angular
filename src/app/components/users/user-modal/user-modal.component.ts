@@ -38,10 +38,10 @@ export class UserModalComponent {
   private openModal() {
     this.modalService.open(this.content, {ariaLabelledBy: 'modal-basic-title'}).result.then(
       () => {
-        alert('confirm')
+
       },
       () => {
-        alert('close')
+        // close
       },
     );
   }
