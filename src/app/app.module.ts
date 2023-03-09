@@ -11,6 +11,7 @@ import { MainMapComponent } from './components/map/main-map/main-map.component';
 import { UserNewButtonComponent } from './components/users/user-new-button/user-new-button.component';
 import { UserFormComponent } from './components/users/user-form/user-form.component';
 import { UserModalComponent } from './components/users/user-modal/user-modal.component';
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -29,6 +30,8 @@ export function createTranslateLoader(http: HttpClient) {
     LeafletModule,
     NgbModalModule,
     HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule,
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,
