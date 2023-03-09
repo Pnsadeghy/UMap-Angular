@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import {LeafletModule} from "@asymmetrik/ngx-leaflet";
+import {NgbModalModule} from "@ng-bootstrap/ng-bootstrap";
 
 import { AppComponent } from './app.component';
 import { MainMapComponent } from './components/map/main-map/main-map.component';
@@ -18,7 +19,8 @@ import { UserModalComponent } from './components/users/user-modal/user-modal.com
   ],
   imports: [
     BrowserModule,
-    LeafletModule
+    LeafletModule,
+    NgbModalModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import {Component, NgModule, ViewChild} from '@angular/core';
 import {Subscription} from "rxjs";
 import {UserEventService} from "../../../servivecs/user-event.service";
+import {NgbModal} from "@ng-bootstrap/ng-bootstrap";
 
 @Component({
   selector: 'app-user-modal',
@@ -9,13 +10,24 @@ import {UserEventService} from "../../../servivecs/user-event.service";
 })
 export class UserModalComponent {
   subscription: Subscription;
+  @ViewChild('content', { static: false }) private content: any;
 
-  constructor(private userEvents: UserEventService) {
+  constructor(private userEvents: UserEventService, private modalService: NgbModal) {
     // subscribe for user modal requests
     this.subscription = this.userEvents.getEvent().subscribe((data: any) => {
-       console.log(data);
-       alert(data ? "Edit user" : "New user");
+       this.openModal();
     });
+  }
+
+  openModal() {
+    this.modalService.open(this.content, { ariaLabelledBy: 'modal-basic-title' }).result.then(
+      () => {
+        alert('confirm')
+      },
+      () => {
+        alert('close')
+      },
+    );
   }
 
   ngOnDestroy() {
