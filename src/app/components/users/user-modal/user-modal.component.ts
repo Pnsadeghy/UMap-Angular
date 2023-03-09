@@ -12,6 +12,8 @@ export class UserModalComponent {
   @ViewChild('content', {static: false}) private content: any;
   subscription: Subscription;
 
+  formIsActive: boolean = false;
+
   userData: any = null;
   editUser: boolean = false;
   modalTitle: string = '';
@@ -36,12 +38,15 @@ export class UserModalComponent {
   }
 
   private openModal() {
+    this.formIsActive = true;
     this.modalService.open(this.content, {ariaLabelledBy: 'modal-basic-title'}).result.then(
       () => {
 
       },
       () => {
-        // close
+        setTimeout(() => {
+          this.formIsActive = false;
+        }, 500);
       },
     );
   }

@@ -6,6 +6,6 @@
     <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss()"></button>
   </div>
   <div class="modal-body">
-    <app-user-form [userData]="userData" (close)="modal.dismiss()" />
+    <app-user-form *ngIf="formIsActive" [userData]="userData" (close)="modal.dismiss()" />
   </div>
 </ng-template>
