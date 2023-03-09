@@ -1,20 +1,21 @@
-import {Component, EventEmitter, Input, Output} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 
 @Component({
   selector: 'app-image-upload',
   templateUrl: './image-upload.component.html',
   styleUrls: ['./image-upload.component.css']
 })
-export class ImageUploadComponent {
+export class ImageUploadComponent implements OnInit {
   @Input() value?: string = "";
   @Output() change = new EventEmitter<string>();
 
   file: any = "";
 
-  constructor() {
+  constructor() {}
+
+  ngOnInit() {
     this.file = this.value;
   }
-
 
   onSelect(event: any) {
     const reader = new FileReader();
@@ -31,5 +32,6 @@ export class ImageUploadComponent {
 
   onRemove() {
     this.file = "";
+    this.change.emit("");
   }
 }

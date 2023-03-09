@@ -1,4 +1,4 @@
-<form [formGroup]="form" (ngSubmit)="onSubmit()" novalidate>
+<form [formGroup]="form" (ngSubmit)="onSubmit()" novalidate *ngIf="formIsSet">
   <div class="form-group">
     <label for="name" class="form-group_label required">
       {{ 'location.name' | translate }}

@@ -1,4 +1,4 @@
-import {Component, EventEmitter, Input, Output} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {mapOptions} from "../../../helpers/map.helpers";
 import {marker, Map, DragEndEvent} from "leaflet";
 import {ILocationDetail} from "../../../interfaces/ILocationDetail";
@@ -8,14 +8,17 @@ import {ILocationDetail} from "../../../interfaces/ILocationDetail";
   templateUrl: './map-input.component.html',
   styleUrls: ['./map-input.component.css']
 })
-export class MapInputComponent {
+export class MapInputComponent implements OnInit {
   @Input() value: ILocationDetail = { lat: 0, lng: 0 };
   @Output() change = new EventEmitter<any>();
 
   options: any;
   marker: any;
+  isSet: boolean = false;
 
-  constructor() {
+  constructor() {}
+
+  ngOnInit() {
     // get map options
     this.options = mapOptions(this.value.lat, this.value.lng);
 
@@ -23,6 +26,7 @@ export class MapInputComponent {
     this.marker = marker([this.value.lat, this.value.lng], {
       draggable: true
     });
+    this.isSet = true;
   }
 
   onMapReady(map: Map) {
